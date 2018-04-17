@@ -60,7 +60,11 @@ public enum SeriesType implements LowercaseEnum {
 
     PYRAMID(ChartType.BASIC),
 
-    HEATMAP(ChartType.BASIC);
+    HEATMAP(ChartType.BASIC),
+
+	BELLCURVE(ChartType.HISTOGRAM_BELLCURVE),
+
+	HISTOGRAM(ChartType.HISTOGRAM_BELLCURVE);
 
     private ChartType chartType;
 

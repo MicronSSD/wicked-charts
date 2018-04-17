@@ -139,6 +139,21 @@ public class OptionsUtil {
                 || (options.getExporting().getEnabled() != null && options.getExporting().getEnabled());
     }
 
+    /**
+     * Checks if the specified Options object needs the javascript file
+     * "histogram-bellcurve.js" to work properly. This method can be called by GUI
+     * components to determine whether the javascript file has to be included in
+     * the page or not.
+     *
+     * @param options the {@link Options} object to analyze
+     * @return true, if "histogram-bellcurve.js" is needed to render the options,
+     * false if not
+     */
+    public static boolean needsHistogramJs(final Options options) {
+        return hasChartTypeNeedingHistogramJs(options);
+    }
+
+
     private static boolean hasPolar(final Options options) {
         return options.getChartOptions() != null && options.getChartOptions().getPolar() != null
                 && options.getChartOptions().getPolar();
@@ -152,6 +167,21 @@ public class OptionsUtil {
         if (options.getSeries() != null) {
             for (Series<?> series : options.getSeries()) {
                 if (series.getType() != null && series.getType().getChartType() == ChartType.ADVANCED) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasChartTypeNeedingHistogramJs(final Options options) {
+        if (options.getChartOptions() != null && options.getChartOptions().getType() != null
+                && options.getChartOptions().getType().getChartType() == ChartType.HISTOGRAM_BELLCURVE) {
+            return true;
+        }
+        if (options.getSeries() != null) {
+            for (Series<?> series : options.getSeries()) {
+                if (series.getType() != null && series.getType().getChartType() == ChartType.HISTOGRAM_BELLCURVE) {
                     return true;
                 }
             }

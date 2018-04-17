@@ -71,6 +71,8 @@ public class JavaScriptResourceRegistry {
 
     public static final String DEFAULT_MOMENTJS_URL = "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js";
 
+    public static final String DEFAULT_HIGHCHARTS_HISTOGRAMBELLCURVE_URL = "https://code.highcharts.com/modules/histogram-bellcurve.js";
+
     public static JavaScriptResourceRegistry getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new JavaScriptResourceRegistry();
@@ -95,6 +97,8 @@ public class JavaScriptResourceRegistry {
     private RegistryEntry chartJsBundleEntry = new RegistryEntry(DEFAULT_CHARTJS_BUNDLE_URL);
 
     private RegistryEntry momentJsEntry = new RegistryEntry(DEFAULT_MOMENTJS_URL);
+
+    private RegistryEntry histogramBellcurveEntry = new RegistryEntry(DEFAULT_HIGHCHARTS_HISTOGRAMBELLCURVE_URL);
 
     private static JavaScriptResourceRegistry INSTANCE;
 
@@ -137,8 +141,10 @@ public class JavaScriptResourceRegistry {
     public RegistryEntry getMomentJsentry() {
         return this.momentJsEntry;
     }
-    
-    
+
+    public RegistryEntry getHistogramBellcurveEntry() {
+        return this.histogramBellcurveEntry;
+    }
 
     /**
      * Sets the {@link ResourceReference} to use to load the Highcharts exporting
@@ -203,6 +209,29 @@ public class JavaScriptResourceRegistry {
     public void setHighchartsMoreReference(final String url) {
         this.highchartsMoreEntry = new RegistryEntry(url);
     }
+
+    /**
+     * Sets the {@link ResourceReference} to use to load the Highcharts "histogram-bellcurve"
+     * javascript library (histogram-bellcurve.js). Use this method if you want to
+     * include the javascript file in your web application.
+     *
+     * @param reference reference a resource to be used
+     */
+    public void setHighchartsHistogramBellcurveReference(final ResourceReference reference) {
+        this.histogramBellcurveEntry = new RegistryEntry(reference);
+    }
+
+    /**
+     * Sets the URL to use to load the Highcharts "histogram-bellcurve" javascript library
+     * (histogram-bellcurve.js). Use this method if you want to load the javascript
+     * file from an external URL.
+     *
+     * @param url String which specifies an url
+     */
+    public void setHighchartsHistogramBellcurveReference(final String url) {
+        this.histogramBellcurveEntry = new RegistryEntry(url);
+    }
+
 
     /**
      * Sets the {@link ResourceReference} to use to load the Highcharts javascript

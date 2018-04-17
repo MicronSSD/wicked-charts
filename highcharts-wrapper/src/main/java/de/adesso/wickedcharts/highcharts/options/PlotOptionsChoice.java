@@ -57,6 +57,10 @@ public class PlotOptionsChoice implements Serializable {
 
     private PlotOptions bubble;
 
+    private PlotOptions bellcurve;
+
+    private PlotOptions histogram;
+
     public PlotOptionsChoice() {
 
     }
@@ -104,6 +108,26 @@ public class PlotOptionsChoice implements Serializable {
     public PlotOptions getSpline() {
         return this.spline;
     }
+
+    public PlotOptions getBoxplot() {
+        return boxplot;
+    }
+
+    public PlotOptions getColumnrange() {
+        return columnrange;
+    }
+
+    public PlotOptions getGauge() {
+        return gauge;
+    }
+
+    public PlotOptions getBubble() {
+        return bubble;
+    }
+
+    public PlotOptions getBellcurve() { return bellcurve; }
+
+    public PlotOptions getHistogram() { return histogram; }
 
     public PlotOptionsChoice setArea(final PlotOptions area) {
         this.area = area;
@@ -165,17 +189,29 @@ public class PlotOptionsChoice implements Serializable {
         return this;
     }
 
-    public PlotOptions getColumnrange() {
-        return columnrange;
-    }
-
     public PlotOptionsChoice setGauge(PlotOptions gauge) {
         this.gauge = gauge;
         return this;
     }
 
-    public PlotOptions getGauge() {
-        return gauge;
+    public PlotOptionsChoice setBoxplot(PlotOptions boxplot) {
+        this.boxplot = boxplot;
+        return this;
+    }
+
+    public PlotOptionsChoice setBubble(PlotOptions bubble) {
+        this.bubble = bubble;
+        return this;
+    }
+
+    public PlotOptionsChoice setBellcurve(PlotOptions bellcurve){
+        this.bellcurve = bellcurve;
+        return this;
+    }
+
+    public PlotOptionsChoice setHistogram(PlotOptions histogram){
+        this.histogram = histogram;
+        return this;
     }
 
     public PlotOptions getPlotOptions(SeriesType type) {
@@ -200,26 +236,13 @@ public class PlotOptionsChoice implements Serializable {
                 return this.columnrange;
             case GAUGE:
                 return this.gauge;
+            case BELLCURVE:
+                return this.bellcurve;
+            case HISTOGRAM:
+                return this.histogram;
             default:
                 throw new IllegalArgumentException("Invalid SeriesType: " + type);
         }
-    }
-
-    public PlotOptions getBoxplot() {
-        return boxplot;
-    }
-
-    public PlotOptionsChoice setBoxplot(PlotOptions boxplot) {
-        this.boxplot = boxplot;
-        return this;
-    }
-
-    public PlotOptions getBubble() {
-        return bubble;
-    }
-
-    public void setBubble(PlotOptions bubble) {
-        this.bubble = bubble;
     }
 
     public PlotOptionsChoice setPlotOptions(PlotOptions plotOptions, SeriesType type) {
@@ -259,6 +282,12 @@ public class PlotOptionsChoice implements Serializable {
                 break;
             case BOXPLOT:
                 this.boxplot = plotOptions;
+                break;
+            case BELLCURVE:
+                this.bellcurve = plotOptions;
+                break;
+            case HISTOGRAM:
+                this.histogram = plotOptions;
                 break;
             default:
                 throw new IllegalArgumentException("Invalid SeriesType: " + type);

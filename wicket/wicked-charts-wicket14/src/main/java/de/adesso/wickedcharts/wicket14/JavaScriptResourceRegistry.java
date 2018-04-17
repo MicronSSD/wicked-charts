@@ -68,6 +68,8 @@ public class JavaScriptResourceRegistry {
 
     public static final String DEFAULT_HIGHCHARTS_EXPORTING_URL = "http://code.highcharts.com/4.1.10/modules/exporting.js";
 
+    public static final String DEFAULT_HIGHCHARTS_HISTOGRAMBELLCURVE_URL = "https://code.highcharts.com/modules/histogram-bellcurve.js";
+
 	public static JavaScriptResourceRegistry getInstance() {
 		if (INSTANCE == null) {
 			INSTANCE = new JavaScriptResourceRegistry();
@@ -86,6 +88,8 @@ public class JavaScriptResourceRegistry {
     private RegistryEntry funnelEntry = new RegistryEntry(DEFAULT_FUNNEL_URL);
 
     private RegistryEntry heatmapEntry = new RegistryEntry(DEFAULT_HEATMAP_URL);
+
+    private RegistryEntry histogramBellcurveEntry = new RegistryEntry(DEFAULT_HIGHCHARTS_HISTOGRAMBELLCURVE_URL);
 
 	private static JavaScriptResourceRegistry INSTANCE;
 
@@ -116,6 +120,10 @@ public class JavaScriptResourceRegistry {
     public RegistryEntry getHeatmapEntry() {
         return this.heatmapEntry;
     }
+
+	public RegistryEntry getHistogramBellcurveEntry() {
+		return this.histogramBellcurveEntry;
+	}
 
     /**
      * Sets the {@link ResourceReference} to use to load the Highcharts module "funnel.js".
@@ -179,6 +187,28 @@ public class JavaScriptResourceRegistry {
 	 */
 	public void setHighchartsMoreReference(final String url) {
 		this.highchartsMoreEntry = new RegistryEntry(url);
+	}
+
+	/**
+	 * Sets the {@link ResourceReference} to use to load the Highcharts "histogram-bellcurve"
+	 * javascript library (histogram-bellcurve.js). Use this method if you want to
+	 * include the javascript file in your web application.
+	 *
+	 * @param reference reference a resource to be used
+	 */
+	public void setHighchartsHistogramBellcurveReference(final ResourceReference reference) {
+		this.histogramBellcurveEntry = new RegistryEntry(reference);
+	}
+
+	/**
+	 * Sets the URL to use to load the Highcharts "histogram-bellcurve" javascript library
+	 * (histogram-bellcurve.js). Use this method if you want to load the javascript
+	 * file from an external URL.
+	 *
+	 * @param url String which specifies an url
+	 */
+	public void setHighchartsHistogramBellcurveReference(final String url) {
+		this.histogramBellcurveEntry = new RegistryEntry(url);
 	}
 
 	/**

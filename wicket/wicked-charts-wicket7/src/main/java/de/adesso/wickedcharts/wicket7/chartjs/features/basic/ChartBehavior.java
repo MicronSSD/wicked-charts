@@ -90,6 +90,7 @@ public class ChartBehavior extends Behavior {
         resourceRegistry.getJQueryEntry().addToHeaderResponse(response);
         resourceRegistry.getChartJsBundle().addToHeaderResponse(response);
         resourceRegistry.getMomentJsentry().addToHeaderResponse(response);
+        resourceRegistry.getHistogramBellcurveEntry().addToHeaderResponse(response);
     }
 
     @Override

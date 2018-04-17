@@ -116,6 +116,9 @@ public class ChartBehavior extends Behavior {
         if (OptionsUtil.needsHeatmapJs(options)) {
             JavaScriptResourceRegistry.getInstance().getHeatmapEntry().addToHeaderResponse(response);
         }
+        if (OptionsUtil.needsHistogramJs(options)) {
+            JavaScriptResourceRegistry.getInstance().getHistogramBellcurveEntry().addToHeaderResponse(response);
+        }
     }
 
     @Override
